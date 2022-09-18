@@ -1,0 +1,53 @@
+/* Dashboard CSS Start */
+#myTabContent {
+	padding-bottom: 35px;
+}
+.dashbord-tab .nav-link {
+	background-color: transparent;
+	border: 1px solid #435ebe;
+	color: #435ebe;
+	outline: none;
+	border-radius: 5px;
+	transition: all ease 0.3s;
+}
+.dashbord-tab .nav-tabs {
+	margin: 0px -4px;
+}
+.dashbord-tab .nav-item {
+	padding: 0px 4px;
+}
+.dashbord-tab .nav-tabs .nav-link.active,
+.dashbord-tab .nav-tabs .nav-link:hover {
+	background-color: #435ebe;
+	color: #fff;
+	border: 1px solid #435ebe;
+	transition: all ease 0.3s;
+}
+
+.dashbord-tab .nav-tabs .nav-link.active::after {
+	content: none;
+}
+.dashbord-tab .tab-pane {
+	margin-top: 30px;
+	background: #fff;
+	border-radius: 0.7rem;
+}
+
+.dashbord-tab thead tr {
+	background-color: #f6f6fa;
+}
+
+.dashbord-tab .table thead tr th {
+	border-bottom: none !important;
+}
+
+.table > :not(caption) > * > * {
+	border-bottom-width: 0px;
+}
+
+.dashbord-tab .table tbody tr:nth-child(2n) {
+	background-color: #f6f6fa;
+}
+.dashbord-tab .table tbody tr td.uploaded i {
+	color: #5ddab4;
+}
