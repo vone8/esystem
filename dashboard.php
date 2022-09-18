@@ -1,3 +1,10 @@
+<?php session_start();
+include_once('./includes/config.php');
+if (strlen($_SESSION['adminid']==0)) {
+  header('location:logout.php');
+  } else{
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -676,3 +683,4 @@
 </body>
 
 </html>
+<?php } ?>
