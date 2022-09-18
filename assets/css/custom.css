@@ -28,15 +28,18 @@
 	content: none;
 }
 .dashbord-tab .tab-pane {
-	margin-top: 30px;
+	margin-top: 15px;
 	background: #fff;
 	border-radius: 0.7rem;
+	padding: 15px;
 }
 
 .dashbord-tab thead tr {
 	background-color: #f6f6fa;
 }
-
+.dashbord-tab .table {
+	margin-bottom: 0px;
+}
 .dashbord-tab .table thead tr th {
 	border-bottom: none !important;
 }
