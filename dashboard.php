@@ -50,6 +50,13 @@ if (strlen($_SESSION['adminid']==0)) {
                             </a>
                         </li>
 
+                        <li class="sidebar-item active ">
+                            <a href="logout.php" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Log out</span>
+                            </a>
+                        </li>
+
                         <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-stack"></i>
