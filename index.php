@@ -11,7 +11,7 @@ if(isset($_POST['login-user']))
     $num=mysqli_fetch_array($ret);
     if($num>0)
     {   $_SESSION['adminid'] = 0;
-        if($num['user_type'] == "admin"){
+        if($num['user_type'] == "super-admin" || $num['user_type'] == "admin"){
             $_SESSION['adminid'] = 1;
         }
         $_SESSION['ID']=$num['ID'];

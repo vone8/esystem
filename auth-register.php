@@ -125,7 +125,7 @@ if(isset($_POST['user-register']))
                         <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5" name="user-register">Sign Up</button>
                     </form>
                     <div class="text-center mt-5 text-lg fs-4">
-                        <p class='text-gray-600'>Already have an account? <a href="auth-login.php"
+                        <p class='text-gray-600'>Already have an account? <a href="index.php"
                                 class="font-bold">Log
                                 in</a>.</p>
                     </div>

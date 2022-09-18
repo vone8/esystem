@@ -1,5 +1,6 @@
 <?php session_start();
 include_once('./includes/config.php');
+
 if (strlen($_SESSION['adminid']==0)) {
   header('location:logout.php');
   } else{
@@ -29,82 +30,8 @@ if (strlen($_SESSION['adminid']==0)) {
 
 <body>
     <div id="app">
-        <div class="modal fade" id="onload" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> <!-- Add this line to your code -->
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Firm Details</h5>
-                    </div>
-                    <div class="modal-body">
-                    <div class="card mb-0">
-                        <div class="card-body">
-                            <form>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="basicInput">Name/Firm</label>
-                                            <input type="text" class="form-control" id="basicInput" placeholder="Enter email">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="basicInput">Birth/Est. Date</label>
-                                            <input type="text" class="form-control" id="basicInput" placeholder="Enter email">
-                                        </div>        
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="basicInput">PAN Number</label>
-                                            <input type="text" class="form-control" id="basicInput" placeholder="Enter email">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="basicInput">GST Number</label>
-                                            <input type="text" class="form-control" id="basicInput" placeholder="Enter email">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="basicInput">Gender</label>
-                                            <div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                                    <label class="form-check-label" for="flexRadioDefault1">
-                                                        Male
-                                                    </label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                                    <label class="form-check-label" for="flexRadioDefault2">
-                                                    Female
-                                                    </label>
-                                                </div>
-                                            </div>  
-                                        </div> 
-                                        
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label for="basicInput">Address</label>
-                                                <textarea class="form-control" id="address" rows="3"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-primary rounded-pill">Submit</button>
-                                        </div>
-                                    </div>
-                                    </div>
-                                        
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> <!-- And the relavant closing div tag -->
-
+        <?php include_once('./includes/firm-register.php'); ?>
+        <?php include_once('./includes/firm-model.php'); ?>
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active">
                 <div class="sidebar-header">
@@ -666,6 +593,17 @@ if (strlen($_SESSION['adminid']==0)) {
                         <p>2022 &copy; Digit Radius</p>
                     </div>
                 </div>
+                <?php   $ID = $_SESSION['ID'];
+                        $ret= mysqli_query($con,"SELECT * FROM eff_users WHERE ID = '$ID' ");
+                        $num=mysqli_fetch_array($ret);
+                        if($num['ID'] == 0){  ?>
+                            <script type="text/javascript">
+                                window.onload = () => {
+                                    $('#onload').modal('show');
+                                }
+                            </script>
+                 <?php }
+                ?>
             </footer>
         </div>
     </div>
@@ -677,11 +615,6 @@ if (strlen($_SESSION['adminid']==0)) {
 
     <script src="assets/js/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-    window.onload = () => {
-        $('#onload').modal('show');
-    }
-</script>
 </body>
 
 </html>
