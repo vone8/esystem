@@ -37,7 +37,7 @@ if (strlen($_SESSION['adminid']==0)) {
                 <div class="sidebar-header">
                     <div class="d-flex justify-content-between">
                         <div class="logo">
-                            <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
+                            <a href="index.html">Logo</a>
                         </div>
                         <div class="toggler">
                             <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -157,6 +157,27 @@ if (strlen($_SESSION['adminid']==0)) {
                                             <thead>
                                                 <tr>
                                                 <th scope="col">DOCUMENT CLASSES</th>
+                                                <th scope="col">DOCUMENT CLASSES</th>
+                                                <th scope="col">DOCUMENT CLASSES</th>
+                                                <th scope="col">DOCUMENT CLASSES</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                <td class="uploaded"><div class="document-wrapper"><span class="document-title">PAN</span><a href="../esystem/assets/docs/personal/swami-vivekanand-bio.pdf" download="PAN Card"><i class="fa fa-file-text-o" aria-hidden="true"></i></a></div></td>
+                                                <td><div class="document-wrapper"><span class="document-title">PAN</span><i class="fa fa-file-text-o" aria-hidden="true"></i></div></td>
+                                                <td><div class="document-wrapper"><span class="document-title">PAN</span><i class="fa fa-file-text-o" aria-hidden="true"></i></div></td>
+                                                <td><div class="document-wrapper"><span class="document-title">PAN</span><i class="fa fa-file-text-o" aria-hidden="true"></i></div></td>
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="tab-pane fade" id="administrative" role="tabpanel" aria-labelledby="administrative-tab">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                <th scope="col">DOCUMENT CLASSES</th>
                                                 <th scope="col">APR</th>
                                                 <th scope="col">MAY</th>
                                                 <th scope="col">JUN</th>
@@ -221,10 +242,151 @@ if (strlen($_SESSION['adminid']==0)) {
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div class="tab-pane fade" id="administrative" role="tabpanel" aria-labelledby="administrative-tab">2</div>
-                                    <div class="tab-pane fade" id="bank-loans" role="tabpanel" aria-labelledby="bank-loans-tab">3</div>
-                                    <div class="tab-pane fade" id="fixassests" role="tabpanel" aria-labelledby="fixassests-tab">4</div>
-                                    <div class="tab-pane fade" id="yearend" role="tabpanel" aria-labelledby="yearend-tab">5</div>
+                                    <div class="tab-pane fade" id="bank-loans" role="tabpanel" aria-labelledby="bank-loans-tab">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                <th scope="col">DOCUMENT CLASSES</th>
+                                                <th scope="col">APR</th>
+                                                <th scope="col">MAY</th>
+                                                <th scope="col">JUN</th>
+                                                <th scope="col">JUL</th>
+                                                <th scope="col">AUG</th>
+                                                <th scope="col">SEP</th>
+                                                <th scope="col">OCT</th>
+                                                <th scope="col">NOV</th>
+                                                <th scope="col">DEC</th>
+                                                <th scope="col">JAN</th>
+                                                <th scope="col">FEB</th>
+                                                <th scope="col">MAR</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                <th scope="row">Saving Bank Statements</th>
+                                                <td class="uploaded"><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                </tr>
+                                                <tr>
+                                                <th scope="row">Sanction Letter</th>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                </tr>
+                                                
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="tab-pane fade" id="fixassests" role="tabpanel" aria-labelledby="fixassests-tab">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                <th scope="col">DOCUMENT CLASSES</th>
+                                                <th scope="col">APR</th>
+                                                <th scope="col">MAY</th>
+                                                <th scope="col">JUN</th>
+                                                <th scope="col">JUL</th>
+                                                <th scope="col">AUG</th>
+                                                <th scope="col">SEP</th>
+                                                <th scope="col">OCT</th>
+                                                <th scope="col">NOV</th>
+                                                <th scope="col">DEC</th>
+                                                <th scope="col">JAN</th>
+                                                <th scope="col">FEB</th>
+                                                <th scope="col">MAR</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                <th scope="row">Computer & Software</th>
+                                                <td class="uploaded"><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                </tr>
+                                                <tr>
+                                                <th scope="row">Furniture & Fixtures</th>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                </tr>
+                                                <tr>
+                                                <th scope="row">Plant and Machenaries</th>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="tab-pane fade" id="yearend" role="tabpanel" aria-labelledby="yearend-tab">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                <th scope="col">DOCUMENT CLASSES(Yearly)</th>
+                                                <th scope="col">DOCUMENT CLASSES(Yearly)</th>
+                                                <th scope="col">DOCUMENT CLASSES(Yearly)</th>
+                                                <th scope="col">DOCUMENT CLASSES(Yearly)</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                <td class="uploaded"><div class="document-wrapper"><span class="document-title">PAN</span><a href="../esystem/assets/docs/personal/swami-vivekanand-bio.pdf" download="PAN Card"><i class="fa fa-file-text-o" aria-hidden="true"></i></a></div></td>
+                                                <td><div class="document-wrapper"><span class="document-title">26AS</span><i class="fa fa-file-text-o" aria-hidden="true"></i></div></td>
+                                                <td><div class="document-wrapper"><span class="document-title">GST</span><i class="fa fa-file-text-o" aria-hidden="true"></i></div></td>
+                                                <td><div class="document-wrapper"><span class="document-title">ITR Form</span><i class="fa fa-file-text-o" aria-hidden="true"></i></div></td>
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
 
                                 </div>
 

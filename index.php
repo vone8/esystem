@@ -38,6 +38,7 @@ if(isset($_POST['login-user']))
     <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="stylesheet" href="assets/css/pages/auth.css">
+    <script src="https://kit.fontawesome.com/0b122afe5f.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -47,7 +48,7 @@ if(isset($_POST['login-user']))
             <div class="col-lg-5 col-12">
                 <div id="auth-left">
                     <div class="auth-logo">
-                        <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo"></a>
+                        <a href="index.html"></a>
                     </div>
                     <h1 class="auth-title">Log in.</h1>
                     <p class="auth-subtitle mb-5">Log in with your data that you entered during registration.</p>

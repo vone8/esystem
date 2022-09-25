@@ -33,7 +33,19 @@
 	border-radius: 0.7rem;
 	padding: 15px;
 }
-
+.document-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.document-wrapper .document-title {
+	font-size: 14px;
+	line-height: 1.2;
+	font-weight: 500;
+}
+.document-wrapper i.fa {
+	cursor: pointer;
+}
 .dashbord-tab thead tr {
 	background-color: #f6f6fa;
 }
@@ -43,7 +55,34 @@
 .dashbord-tab .table thead tr th {
 	border-bottom: none !important;
 }
-
+.gen-table {
+	margin-top: 15px;
+	background: #fff;
+	border-radius: 0.7rem;
+	padding: 15px;
+	margin-bottom: 35px;
+}
+.gen-table td.active {
+	color: #5ddab4;
+}
+.gen-table td.inactive {
+	color: #ff0000;
+}
+.gen-table .actions i.fas {
+	display: inline-block;
+	margin-right: 16px;
+	cursor: pointer;
+	transition: all ease 0.3s;
+}
+.actions i.fas:hover {
+	transition: all ease 0.3s;
+}
+.actions i.fa-edit:hover {
+	color: #5ddab4;
+}
+.actions i.fa-trash:hover {
+	color: #ff0000;
+}
 .table > :not(caption) > * > * {
 	border-bottom-width: 0px;
 }
