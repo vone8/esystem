@@ -132,25 +132,74 @@ if (strlen($_SESSION['adminid']==0)) {
                             </div>
                         </div>
 
+                        <div class="row search">
+                            <div class="col">
+                                <form class="form-inline d-flex align-items-center" action="#">
+                                    <div class="form-group mb-0">
+                                        <input class="form-control" type="search" name="search" placeholder="Search User">
+                                    </div>
+                                    <button type="submit" class="btn-search btn btn-primary">Search</button>
+                                </form>
+                            </div>
+                            <div class="col d-flex justify-content-end">
+                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Status</button>
+                            </div>
+                        </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Add Status</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-md-6 my-2">
+                                                <input type="text" class="form-control" placeholder="Enter Status Name" aria-label="Enter Status Name">
+                                            </div>
+                                            <div class="col-md-6 my-2">
+                                                <input type="text" class="form-control" placeholder="Enter Status Role" aria-label="Enter Status Role">
+                                            </div>
+                                            <div class="col-md-6 my-2">
+                                                <select class="form-select" aria-label="Default select example">
+                                                    <option selected>Status Active</option>
+                                                    <option value="1">Status Inactive</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-12 mt-3 ">
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row dashbord-tab">
                             <div class="col-12 gen-table">
                                  <table class="table">
                                             <thead>
                                                 <tr>
-                                                <th scope="col">USER NAME</th>
-                                                <th scope="col">EMAIL</th>
-                                                <th scope="col">CONTACT</th>
-                                                <th scope="col">USER TYPE</th>
+                                                <th scope="col">No.</th>
+                                                <th scope="col">Workflow Status</th>
+                                                <th scope="col">Role</th>
+                                                <th scope="col">Status</th>
                                                 <th scope="col">ACTIONS</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                <td>Vijay</td>
-                                                <td>vijay.digitradius@gmail.com</td>
-                                                <td>987654320</td>
-                                                <td>Client</td>
+                                                <td>1</td>
+                                                <td>Unaccounted</td>
+                                                <td>Pending for Account</td>
+                                                <td>Active</td>
                                                 <td class="actions">
+                                                    <i class="fas fa-edit"></i>
                                                     <i class="fas fa-trash"></i></td>
                                                 </tr>
                                                 
@@ -177,17 +226,6 @@ if (strlen($_SESSION['adminid']==0)) {
                         <p>2022 &copy; Digit Radius</p>
                     </div>
                 </div>
-                <?php   $ID = $_SESSION['ID'];
-                        $ret= mysqli_query($con,"SELECT * FROM eff_users WHERE ID = '$ID' ");
-                        $num=mysqli_fetch_array($ret);
-                        if($num['ID'] == 0){  ?>
-                            <script type="text/javascript">
-                                window.onload = () => {
-                                    $('#onload').modal('show');
-                                }
-                            </script>
-                 <?php }
-                ?>
             </footer>
         </div>
     </div>
