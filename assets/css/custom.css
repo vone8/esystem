@@ -93,3 +93,6 @@
 .dashbord-tab .table tbody tr td.uploaded i {
 	color: #5ddab4;
 }
+.search .btn-search {
+	margin-left: 8px;
+}

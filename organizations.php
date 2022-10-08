@@ -132,6 +132,60 @@ if (strlen($_SESSION['adminid']==0)) {
                             </div>
                         </div>
 
+                        <div class="row search">
+                            <div class="col">
+                                <form class="form-inline d-flex align-items-center" action="#">
+                                    <div class="form-group mb-0">
+                                        <input class="form-control" type="search" name="search" placeholder="Search Organization">
+                                    </div>
+                                    <button type="submit" class="btn-search btn btn-primary">Search</button>
+                                </form>
+                            </div>
+                            <div class="col d-flex justify-content-end">
+                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Organization</button>
+                            </div>
+                        </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Add Organization</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-md-6 my-2">
+                                                <input type="text" class="form-control" placeholder="Enter Organization Group" aria-label="Enter Organization Group">
+                                            </div>
+                                            <div class="col-md-6 my-2">
+                                                <input type="text" class="form-control" placeholder="Enter Organization Name" aria-label="Enter Organization Name">
+                                            </div>
+                                            <div class="col-md-6 my-2">
+                                                <select class="form-select" aria-label="Default select example">
+                                                    <option selected>Company</option>
+                                                    <option value="1">Individual</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6 my-2">
+                                                <input type="text" class="form-control" placeholder="Organization Email" aria-label="Organization Email">
+                                            </div>
+                                            <div class="col-md-6 my-2">
+                                                <input type="text" class="form-control" placeholder="Organization Contact" aria-label="Organization Contact">
+                                            </div>
+                                            <div class="col-md-12 mt-3 ">
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row dashbord-tab">
                             <div class="col-12 gen-table">
                                  <table class="table">
@@ -180,17 +234,6 @@ if (strlen($_SESSION['adminid']==0)) {
                         <p>2022 &copy; Digit Radius</p>
                     </div>
                 </div>
-                <?php   $ID = $_SESSION['ID'];
-                        $ret= mysqli_query($con,"SELECT * FROM eff_users WHERE ID = '$ID' ");
-                        $num=mysqli_fetch_array($ret);
-                        if($num['ID'] == 0){  ?>
-                            <script type="text/javascript">
-                                window.onload = () => {
-                                    $('#onload').modal('show');
-                                }
-                            </script>
-                 <?php }
-                ?>
             </footer>
         </div>
     </div>
