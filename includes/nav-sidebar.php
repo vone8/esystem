@@ -8,7 +8,7 @@ include_once('function.php');
     <ul class="menu">
         <li class="sidebar-title">Menu</li>
         
-        <li class="sidebar-item active ">
+        <li class="sidebar-item">
             <a href="index.html" class='sidebar-link'>
                 <i class="bi bi-grid-fill"></i>
                 <span>Dashboard</span>
@@ -16,9 +16,29 @@ include_once('function.php');
         </li>
 
         <li class="sidebar-item">
+            <a href="organizations.php" class='sidebar-link'>
+                <i class="fas fa-sitemap"></i>
+                <span>Organizations</span>
+            </a>
+        </li>
+
+        <li class="sidebar-item">
+            <a href="user-management.php" class='sidebar-link'>
+                <i class="fas fa-users"></i>
+                <span>User Management</span>
+            </a>
+        </li>
+
+        <li class="sidebar-item">
+            <a href="workflow-status.php" class='sidebar-link'>
+                <i class="fas fa-briefcase"></i>
+                <span>Workflow Status</span>
+            </a>
+        </li>
+
+        <li class="sidebar-item">
             <a href="logout.php" class='sidebar-link'>
-                <i class="bi bi-grid-fill"></i>
-               
+                <i class="fas fa-sign-out-alt"></i>
                 <span>Log out</span>
             </a>
         </li>
