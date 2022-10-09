@@ -30,6 +30,21 @@ if (strlen($_SESSION['adminid']==0)) {
 
 <body>
 
+    <!-- Modal -->
+    <div class="modal fade" id="view-document" tabindex="-1" aria-labelledby="view-documentLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="view-documentLabel">Document Title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <embed src= "./assets/docs/personal/swami-vivekanand-bio.pdf" width= "100%" height= "700">
+            </div>
+            </div>
+        </div>
+    </div>
+
     <!-- File Upload Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -53,11 +68,11 @@ if (strlen($_SESSION['adminid']==0)) {
                             </div>
                             <div class="col-md-6 mb-4">
                                 <label class="inline-block mb-2 form-label">Select Document Date</label>
-                                <input class="form-control" type="file" id="formFile">
+                                <input class="form-control" type="file" id="formFile" accept="application/pdf, image/png, image/jpeg" multiple>
                             </div>
                             <div class="col-md-6 mb-4">
                                 <label class="inline-block mb-2 form-label">Select Year/Month for Document</label>
-                                <input class="form-control" type="date" name="upload-month-year">
+                                <input class="form-control" type="date" name="upload-month-year" >
                             </div>
                             <div class="col-md-12">
                                 <button class="btn btn-primary" type="submit">Submit</button>
@@ -204,7 +219,7 @@ if (strlen($_SESSION['adminid']==0)) {
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                <td class="uploaded"><div class="document-wrapper"><span class="document-title">PAN</span><a href="../esystem/assets/docs/personal/swami-vivekanand-bio.pdf" download="PAN Card"><i class="fa fa-file-text-o" aria-hidden="true"></i></a></div></td>
+                                                <td class="uploaded"><div class="document-wrapper"><span class="document-title">PAN</span><span><a href="../esystem/assets/docs/personal/swami-vivekanand-bio.pdf" download="PAN Card"><i class="fa fa-file-text-o" aria-hidden="true"></i></a><i class="far fa-eye" data-bs-toggle="modal" data-bs-target="#view-document"></i></span></div></td>
                                                 <td><div class="document-wrapper"><span class="document-title">PAN</span><i class="fa fa-file-text-o" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></div></td>
                                                 <td><div class="document-wrapper"><span class="document-title">PAN</span><i class="fa fa-file-text-o" aria-hidden="true"></i></div></td>
                                                 <td><div class="document-wrapper"><span class="document-title">PAN</span><i class="fa fa-file-text-o" aria-hidden="true"></i></div></td>
@@ -304,7 +319,7 @@ if (strlen($_SESSION['adminid']==0)) {
                                             <tbody>
                                                 <tr>
                                                 <th scope="row">Saving Bank Statements</th>
-                                                <td class="uploaded"><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                                                <td class="uploaded"><i class="fa fa-file-text-o" aria-hidden="true"></i><i class="far fa-eye"></i></td>
                                                 <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
                                                 <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
                                                 <td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
