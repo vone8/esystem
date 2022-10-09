@@ -32,6 +32,7 @@ if (strlen($_SESSION['adminid']==0)) {
     <div id="app">
         <?php include_once('./includes/firm-register.php'); ?>
         <?php include_once('./includes/firm-model.php'); ?>
+        <?php include_once('./includes/config.php'); ?>
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active">
                 <div class="sidebar-header">
@@ -142,7 +143,7 @@ if (strlen($_SESSION['adminid']==0)) {
                                 </form>
                             </div>
                             <div class="col d-flex justify-content-end">
-                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Organization</button>
+                                <button class="btn btn-primary" id="organization-add">Add Organization</button>
                             </div>
                         </div>
 
@@ -155,28 +156,29 @@ if (strlen($_SESSION['adminid']==0)) {
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form>
+                                    <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>" class="organization-form">
                                         <div class="row">
                                             <div class="col-md-6 my-2">
-                                                <input type="text" class="form-control" placeholder="Enter Organization Group" aria-label="Enter Organization Group">
+                                                <input type="text" class="form-control organization-group" placeholder="Enter Organization Group" aria-label="Enter Organization Group" name="organization-group">
                                             </div>
                                             <div class="col-md-6 my-2">
-                                                <input type="text" class="form-control" placeholder="Enter Organization Name" aria-label="Enter Organization Name">
+                                                <input type="text" class="form-control organization-name" placeholder="Enter Organization Name" aria-label="Enter Organization Name" name="organization-name" >
                                             </div>
                                             <div class="col-md-6 my-2">
-                                                <select class="form-select" aria-label="Default select example">
-                                                    <option selected>Company</option>
-                                                    <option value="1">Individual</option>
+                                                <select class="form-select organization-select" aria-label="Default select example" name="organization-select">
+                                                    <option value="">Select Organization</option>
+                                                    <option value="Company">Company</option>
+                                                    <option value="Individual">Individual</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-6 my-2">
-                                                <input type="text" class="form-control" placeholder="Organization Email" aria-label="Organization Email">
+                                                <input type="text" class="form-control organization-email" placeholder="Organization Email" aria-label="Organization Email" name="organization-email">
                                             </div>
                                             <div class="col-md-6 my-2">
-                                                <input type="text" class="form-control" placeholder="Organization Contact" aria-label="Organization Contact">
+                                                <input type="text" class="form-control organization-contact" placeholder="Organization Contact" aria-label="Organization Contact" name="organization-contact">
                                             </div>
                                             <div class="col-md-12 mt-3 ">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                <button type="submit" class="btn btn-primary" value="organization-submit">Submit</button>
                                             </div>
                                         </div>
                                     </form>
@@ -199,19 +201,25 @@ if (strlen($_SESSION['adminid']==0)) {
                                                 <th scope="col">ACTIONS</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                <tr>
-                                                <td>Exelon</td>
-                                                <td>Exelon Consulting Pvt.Ltd</td>
-                                                <td>Company</td>
-                                                <td>exelon@gmail.com</td>
-                                                <td>9876654321</td>
-                                                <td class="actions">
-                                                    <i class="fas fa-edit"></i>
-                                                    <i class="fas fa-trash"></i></td>
-                                                </tr>
-                                                
-                                            </tbody>
+                                            <?php $result = mysqli_query($con,"SELECT * FROM eff_organization"); ?>
+                                                <tbody>
+                                                <?php if (mysqli_num_rows($result) > 0) { 
+                                                    $i=0;
+                                                    while($row = mysqli_fetch_array($result)){ ?>
+                                                        <tr>
+                                                        <td><?php echo $row["organization_group"]; ?></td>
+                                                        <td><?php echo $row["organization_name"]; ?></td>
+                                                        <td><?php echo $row["organization_email"]; ?></td>
+                                                        <td><?php echo $row["organization_contact"]; ?></td>
+                                                        <td><?php echo $row["organization_select"]; ?></td>
+                                                        <td class="actions">
+                                                            <i class="fas fa-edit organization-edit" data-id="<?php echo $row["ID"];  ?>"></i>
+                                                            <i class="fas fa-trash organization-delete" data-id="<?php echo $row["ID"];  ?>"></i></td>
+                                                        </tr>
+                                                <?php }
+                                                } ?>
+                                                </tbody>
+                                            <?php ?>
                                         </table>
                                         <nav aria-label="Page navigation example">
   <ul class="pagination mb-2 mt-4 justify-content-center">
@@ -248,4 +256,96 @@ if (strlen($_SESSION['adminid']==0)) {
 </body>
 
 </html>
-<?php } ?>
+<?php 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+        if(empty($_POST['organization-group']) && empty($_POST['organization-name']) && empty($_POST['organization-email']) && empty($_POST['organization-contact'])){
+            echo "<script>alert('Fill Reuire Infromation');</script>";
+        }else{
+            $organizationgroup = $_POST['organization-group'];
+            $organizationname = $_POST['organization-name'];
+            $organizationemail = $_POST['organization-email'];
+            $organizationcontact = $_POST['organization-contact'];
+            $organizationselect = $_POST['organization-select'];
+            if(isset($_POST['organization-id'])){
+                $msg="UPDATE eff_organization SET organization_group ='".$organizationgroup."', organization_name = '".$organizationname."', organization_email = '".$organizationemail."', organization_contact = '".$organizationcontact."', organization_select ='".$organizationselect."' WHERE  ID ='".$_POST['organization-id']."'";
+
+                if(mysqli_query($con, $msg)){
+                echo "<script>alert('Data update successfully');</script>";
+                    echo "<script type='text/javascript'> document.location = 'organizations.php'; </script>";
+                }else{
+                    echo "<script>alert('Not Registered Data Successfully');</script>";
+                }
+            }else{
+
+            $msg=mysqli_query($con,"INSERT INTO `eff_organization`(`organization_group`, `organization_name`, `organization_email`, `organization_contact`, `organization_select`) VALUES ('$organizationgroup','$organizationname','$organizationemail','$organizationcontact','$organizationselect')");
+            if($msg){
+                echo "<script>alert('Registered successfully');</script>";
+                echo "<script type='text/javascript'> document.location = 'organizations.php'; </script>";
+            }else{
+                echo "<script>alert('Not Registered Data Successfully');</script>";
+            }
+
+            
+            }
+
+            
+
+        }
+        
+    } 
+} ?>
+
+<script type="text/javascript">
+
+
+jQuery( document ).ready(function() {
+    jQuery( ".organization-edit" ).click(function() {
+        jQuery('#exampleModal').modal('show');
+        var ID = jQuery(this).attr("data-id");
+        var inputid = "<input type='hidden' value="+ID+" id='organization-id' name='organization-id'>";
+        jQuery(".modal .organization-form .row").append(inputid);
+        $.ajax({ url: 'includes/function.php',
+                 data: {action: 'get_organizations_data_by_id','ID': ID},
+                 type: 'post',
+                 dataType: 'json',
+                 success: function(response) {
+                        jQuery(".modal .organization-form .organization-group").val(response.organization_group);
+                        jQuery(".modal .organization-form .organization-name").val(response.organization_name);
+                        jQuery(".modal .organization-form .organization-email").val(response.organization_email);
+                        jQuery(".modal .organization-form .organization-contact").val(response.organization_contact);
+                        jQuery(".modal .organization-form .organization-select").val(response.organization_select);
+                              
+                }
+        });
+
+    });
+
+    jQuery( ".organization-delete" ).click(function() {
+            var ID = jQuery(this).attr("data-id");
+             $.ajax({ url: 'includes/function.php',
+                     data: {action: 'delete_organizations_data_by_id','ID': ID},
+                     type: 'post',
+                     dataType: 'json',
+                     success: function(response) {
+                            if(response.status){
+                                alert(" Data Deleted Successfully!! ");
+                                document.location = 'organizations.php';
+                            }else{
+                                alert(" Please try again!! ");
+                                
+                            }                           
+                    }
+            });
+        });
+
+
+    jQuery( "#organization-add" ).click(function() {
+        jQuery('#exampleModal').modal('show');
+        jQuery(".modal .organization-form")[0].reset();
+        jQuery(".modal .organization-form .row #organization-id").remove();
+
+    });
+    
+});
+</script>
