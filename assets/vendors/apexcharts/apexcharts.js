@@ -24401,7 +24401,7 @@
             pathArray = new SVG.PathArray(),
             il,
             jl; // Animate has specified in the SVG spec
-        // See: https://www.w3.org/TR/SVG11/paths.html#PathElement
+        // See: https://www.w3.org/TR/SVG11/paths.php#PathElement
 
         for (var i = 0, il = sourceArray.length; i < il; i++) {
           array[i] = [sourceArray[i][0]];
@@ -28287,7 +28287,7 @@
   // [ ['C', x1, y1, x2, y2, x, y] ... ]
   function arcToBeziere(pos, val) {
       // Parameters extraction, handle out-of-range parameters as specified in the SVG spec
-      // See: https://www.w3.org/TR/SVG11/implnote.html#ArcOutOfRangeParameters
+      // See: https://www.w3.org/TR/SVG11/implnote.php#ArcOutOfRangeParameters
       var rx = Math.abs(val[1]), ry = Math.abs(val[2]), xAxisRotation = val[3] % 360
         , largeArcFlag = val[4], sweepFlag = val[5], x = val[6], y = val[7]
         , A = new SVG.Point(pos), B = new SVG.Point(x, y)
@@ -28302,7 +28302,7 @@
       }
 
       // Ensure radii are large enough using the algorithm provided in the SVG spec
-      // See: https://www.w3.org/TR/SVG11/implnote.html#ArcCorrectionOutOfRangeRadii
+      // See: https://www.w3.org/TR/SVG11/implnote.php#ArcCorrectionOutOfRangeRadii
       primedCoord = new SVG.Point((A.x-B.x)/2, (A.y-B.y)/2).transform(new SVG.Matrix().rotate(xAxisRotation));
       lambda = (primedCoord.x * primedCoord.x) / (rx * rx) + (primedCoord.y * primedCoord.y) / (ry * ry);
       if(lambda > 1) {
@@ -28342,7 +28342,7 @@
       // and the xAxisRotation
       // When the flags largeArcFlag and sweepFlag are equal, it means that the
       // second ellipse is used as a solution
-      // See: https://www.w3.org/TR/SVG/paths.html#PathDataEllipticalArcCommands
+      // See: https://www.w3.org/TR/SVG/paths.php#PathDataEllipticalArcCommands
       if(largeArcFlag === sweepFlag) {
           t *= -1;
       }

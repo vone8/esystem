@@ -147,7 +147,7 @@ var Renderer = /*#__PURE__*/function () {
       var $node = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.markup);
 
       if (this.options && this.options.contents) {
-        $node.html(this.options.contents);
+        $node.php(this.options.contents);
       }
 
       if (this.options && this.options.className) {
@@ -990,7 +990,7 @@ function isElement(node) {
 }
 /**
  * ex) br, col, embed, hr, img, input, ...
- * @see http://www.w3.org/html/wg/drafts/html/master/syntax.html#void-elements
+ * @see http://www.w3.org/html/wg/drafts/html/master/syntax.php#void-elements
  */
 
 
@@ -2044,7 +2044,7 @@ var isTextarea = makePredByNodeName('TEXTAREA');
  */
 
 function dom_value($node, stripLinebreaks) {
-  var val = isTextarea($node[0]) ? $node.val() : $node.html();
+  var val = isTextarea($node[0]) ? $node.val() : $node.php();
 
   if (stripLinebreaks) {
     return val.replace(/[\n\r]/g, '');
@@ -2331,12 +2331,12 @@ var Context_Context = /*#__PURE__*/function () {
 
       if (html === undefined) {
         this.invoke('codeview.sync');
-        return isActivated ? this.layoutInfo.codable.val() : this.layoutInfo.editable.html();
+        return isActivated ? this.layoutInfo.codable.val() : this.layoutInfo.editable.php();
       } else {
         if (isActivated) {
           this.invoke('codeview.sync', html);
         } else {
-          this.layoutInfo.editable.html(html);
+          this.layoutInfo.editable.php(html);
         }
 
         this.$note.val(html);
@@ -3143,7 +3143,7 @@ var range_WrappedRange = /*#__PURE__*/function () {
     key: "pasteHTML",
     value: function pasteHTML(markup) {
       markup = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.trim(markup);
-      var contentsContainer = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<div></div>').html(markup)[0];
+      var contentsContainer = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<div></div>').php(markup)[0];
       var childNodes = lists.from(contentsContainer.childNodes); // const rng = this.wrapBodyInlineWithPara().deleteContents();
 
       var rng = this;
@@ -3327,7 +3327,7 @@ var range_WrappedRange = /*#__PURE__*/function () {
  *  * BoundaryPoint: a point of dom tree
  *  * BoundaryPoints: two boundaryPoints corresponding to the start and the end of the Range
  *
- * See to http://www.w3.org/TR/DOM-Level-2-Traversal-Range/ranges.html#Level-2-Range-Position
+ * See to http://www.w3.org/TR/DOM-Level-2-Traversal-Range/ranges.php#Level-2-Range-Position
  */
 
 
@@ -3673,7 +3673,7 @@ var History_History = /*#__PURE__*/function () {
         }
       };
       return {
-        contents: this.$editable.html(),
+        contents: this.$editable.php(),
         bookmark: rng && rng.isOnEditable() ? rng.bookmark(this.editable) : emptyBookmark
       };
     }
@@ -3681,7 +3681,7 @@ var History_History = /*#__PURE__*/function () {
     key: "applySnapshot",
     value: function applySnapshot(snapshot) {
       if (snapshot.contents !== null) {
-        this.$editable.html(snapshot.contents);
+        this.$editable.php(snapshot.contents);
       }
 
       if (snapshot.bookmark !== null) {
@@ -3698,7 +3698,7 @@ var History_History = /*#__PURE__*/function () {
     key: "rewind",
     value: function rewind() {
       // Create snap shot if not yet recorded
-      if (this.$editable.html() !== this.stack[this.stackOffset].contents) {
+      if (this.$editable.php() !== this.stack[this.stackOffset].contents) {
         this.recordUndo();
       } // Return to the first available snapshot.
 
@@ -3735,7 +3735,7 @@ var History_History = /*#__PURE__*/function () {
 
       this.stackOffset = -1; // Clear the editable area.
 
-      this.$editable.html(''); // Record our first snapshot (of nothing).
+      this.$editable.php(''); // Record our first snapshot (of nothing).
 
       this.recordUndo();
     }
@@ -3747,7 +3747,7 @@ var History_History = /*#__PURE__*/function () {
     key: "undo",
     value: function undo() {
       // Create snap shot if not yet recorded
-      if (this.$editable.html() !== this.stack[this.stackOffset].contents) {
+      if (this.$editable.php() !== this.stack[this.stackOffset].contents) {
         this.recordUndo();
       }
 
@@ -4837,7 +4837,7 @@ var Table_Table = /*#__PURE__*/function () {
                 var isTopFromRowSpan = (!baseCellTr ? 0 : currentCell.baseCell.closest('tr').rowIndex) <= currentTr[0].rowIndex;
 
                 if (isTopFromRowSpan) {
-                  var newTd = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<div></div>').append(external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<td' + tdAttributes + '>' + dom.blank + '</td>').removeAttr('rowspan')).html();
+                  var newTd = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<div></div>').append(external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<td' + tdAttributes + '>' + dom.blank + '</td>').removeAttr('rowspan')).php();
                   html.append(newTd);
                   break;
                 }
@@ -5561,9 +5561,9 @@ var Editor_Editor = /*#__PURE__*/function () {
       } // init content before set event
 
 
-      this.$editable.html(dom.html(this.$note) || dom.emptyPara);
+      this.$editable.php(dom.php(this.$note) || dom.emptyPara);
       this.$editable.on(env.inputEventName, func.debounce(function () {
-        _this2.context.triggerEvent('change', _this2.$editable.html(), _this2.$editable);
+        _this2.context.triggerEvent('change', _this2.$editable.php(), _this2.$editable);
       }, 10));
       this.$editable.on('focusin', function (event) {
         _this2.context.triggerEvent('focusin', event);
@@ -5821,9 +5821,9 @@ var Editor_Editor = /*#__PURE__*/function () {
   }, {
     key: "undo",
     value: function undo() {
-      this.context.triggerEvent('before.command', this.$editable.html());
+      this.context.triggerEvent('before.command', this.$editable.php());
       this.history.undo();
-      this.context.triggerEvent('change', this.$editable.html(), this.$editable);
+      this.context.triggerEvent('change', this.$editable.php(), this.$editable);
     }
     /*
     * commit
@@ -5832,9 +5832,9 @@ var Editor_Editor = /*#__PURE__*/function () {
   }, {
     key: "commit",
     value: function commit() {
-      this.context.triggerEvent('before.command', this.$editable.html());
+      this.context.triggerEvent('before.command', this.$editable.php());
       this.history.commit();
-      this.context.triggerEvent('change', this.$editable.html(), this.$editable);
+      this.context.triggerEvent('change', this.$editable.php(), this.$editable);
     }
     /**
      * redo
@@ -5843,9 +5843,9 @@ var Editor_Editor = /*#__PURE__*/function () {
   }, {
     key: "redo",
     value: function redo() {
-      this.context.triggerEvent('before.command', this.$editable.html());
+      this.context.triggerEvent('before.command', this.$editable.php());
       this.history.redo();
-      this.context.triggerEvent('change', this.$editable.html(), this.$editable);
+      this.context.triggerEvent('change', this.$editable.php(), this.$editable);
     }
     /**
      * before command
@@ -5854,7 +5854,7 @@ var Editor_Editor = /*#__PURE__*/function () {
   }, {
     key: "beforeCommand",
     value: function beforeCommand() {
-      this.context.triggerEvent('before.command', this.$editable.html()); // Set styleWithCSS before run a command
+      this.context.triggerEvent('before.command', this.$editable.php()); // Set styleWithCSS before run a command
 
       document.execCommand('styleWithCSS', false, this.options.styleWithCSS); // keep focus on editable before command execution
 
@@ -5872,7 +5872,7 @@ var Editor_Editor = /*#__PURE__*/function () {
       this.history.recordUndo();
 
       if (!isPreventTrigger) {
-        this.context.triggerEvent('change', this.$editable.html(), this.$editable);
+        this.context.triggerEvent('change', this.$editable.php(), this.$editable);
       }
     }
     /**
@@ -6056,7 +6056,7 @@ var Editor_Editor = /*#__PURE__*/function () {
 
       if (rng !== '') {
         var spans = this.style.styleNodes(rng);
-        this.$editor.find('.note-status-output').html('');
+        this.$editor.find('.note-status-output').php('');
         external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(spans).css(target, value); // [workaround] added styled bogus span for style
         //  - also bogus character needed for cursor position
 
@@ -6074,7 +6074,7 @@ var Editor_Editor = /*#__PURE__*/function () {
         }
       } else {
         var noteStatusOutput = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.now();
-        this.$editor.find('.note-status-output').html('<div id="note-status-output-' + noteStatusOutput + '" class="alert alert-info">' + this.lang.output.noSelection + '</div>');
+        this.$editor.find('.note-status-output').php('<div id="note-status-output-' + noteStatusOutput + '" class="alert alert-info">' + this.lang.output.noSelection + '</div>');
         setTimeout(function () {
           external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('#note-status-output-' + noteStatusOutput).remove();
         }, 5000);
@@ -6242,7 +6242,7 @@ var Editor_Editor = /*#__PURE__*/function () {
   }, {
     key: "isEmpty",
     value: function isEmpty() {
-      return dom.isEmpty(this.$editable[0]) || dom.emptyPara === this.$editable.html();
+      return dom.isEmpty(this.$editable[0]) || dom.emptyPara === this.$editable.php();
     }
     /**
      * Removes all contents and restores the editable instance to an _emptyPara_.
@@ -6630,7 +6630,7 @@ var Codeview_CodeView = /*#__PURE__*/function () {
       var _this2 = this;
 
       var CodeMirror = this.CodeMirrorConstructor;
-      this.$codable.val(dom.html(this.$editable, this.options.prettifyHtml));
+      this.$codable.val(dom.php(this.$editable, this.options.prettifyHtml));
       this.$codable.height(this.$editable.height());
       this.context.invoke('toolbar.updateCodeview', true);
       this.context.invoke('airPopover.updateCodeview', true);
@@ -6682,13 +6682,13 @@ var Codeview_CodeView = /*#__PURE__*/function () {
       }
 
       var value = this.purify(dom.value(this.$codable, this.options.prettifyHtml) || dom.emptyPara);
-      var isChange = this.$editable.html() !== value;
-      this.$editable.html(value);
+      var isChange = this.$editable.php() !== value;
+      this.$editable.php(value);
       this.$editable.height(this.options.height ? this.$codable.height() : 'auto');
       this.$editor.removeClass('codeview');
 
       if (isChange) {
-        this.context.triggerEvent('change', this.$editable.html(), this.$editable);
+        this.context.triggerEvent('change', this.$editable.php(), this.$editable);
       }
 
       this.$editable.focus();
@@ -7053,7 +7053,7 @@ var AutoLink_AutoLink = /*#__PURE__*/function () {
       if (match && (match[1] || match[2])) {
         var link = match[1] ? keyword : defaultScheme + keyword;
         var urlText = this.options.showDomainOnlyForAutolink ? keyword.replace(/^(?:https?:\/\/)?(?:tel?:?)?(?:mailto?:?)?(?:www\.)?/i, '').split('/')[0] : keyword;
-        var node = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<a />').html(urlText).attr('href', link)[0];
+        var node = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<a />').php(urlText).attr('href', link)[0];
 
         if (this.context.options.linkTargetBlank) {
           external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(node).attr('target', '_blank');
@@ -7275,7 +7275,7 @@ var Placeholder_Placeholder = /*#__PURE__*/function () {
       this.$placeholder = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<div class="note-placeholder">');
       this.$placeholder.on('click', function () {
         _this2.context.invoke('focus');
-      }).html(this.options.placeholder).prependTo(this.$editingArea);
+      }).php(this.options.placeholder).prependTo(this.$editingArea);
       this.update();
     }
   }, {
@@ -8159,7 +8159,7 @@ var Buttons_Buttons = /*#__PURE__*/function () {
         });
       }
 
-      $dimensionDisplay.html(dim.c + ' x ' + dim.r);
+      $dimensionDisplay.php(dim.c + ' x ' + dim.r);
     }
   }]);
 
@@ -8376,11 +8376,11 @@ var LinkDialog_LinkDialog = /*#__PURE__*/function () {
         className: 'sn-checkbox-open-in-new-window',
         text: this.lang.link.openInNewWindow,
         checked: true
-      }).render()).html() : '', external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<div/>').append(this.ui.checkbox({
+      }).render()).php() : '', external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<div/>').append(this.ui.checkbox({
         className: 'sn-checkbox-use-protocol',
         text: this.lang.link.useProtocol,
         checked: true
-      }).render()).html()].join('');
+      }).render()).php()].join('');
       var buttonClass = 'btn btn-primary note-btn note-btn-primary note-link-btn';
       var footer = "<input type=\"button\" href=\"#\" class=\"".concat(buttonClass, "\" value=\"").concat(this.lang.link.insert, "\" disabled>");
       this.$dialog = this.ui.dialog({
@@ -9033,11 +9033,11 @@ var VideoDialog_VideoDialog = /*#__PURE__*/function () {
       var vimMatch = url.match(vimRegExp);
       var dmRegExp = /.+dailymotion.com\/(video|hub)\/([^_]+)[^#]*(#video=([^_&]+))?/;
       var dmMatch = url.match(dmRegExp);
-      var youkuRegExp = /\/\/v\.youku\.com\/v_show\/id_(\w+)=*\.html/;
+      var youkuRegExp = /\/\/v\.youku\.com\/v_show\/id_(\w+)=*\.php/;
       var youkuMatch = url.match(youkuRegExp);
       var qqRegExp = /\/\/v\.qq\.com.*?vid=(.+)/;
       var qqMatch = url.match(qqRegExp);
-      var qqRegExp2 = /\/\/v\.qq\.com\/x?\/?(page|cover).*?\/([^\/]+)\.html\??.*/;
+      var qqRegExp2 = /\/\/v\.qq\.com\/x?\/?(page|cover).*?\/([^\/]+)\.php\??.*/;
       var qqMatch2 = url.match(qqRegExp2);
       var mp4RegExp = /^.+.(mp4|m4v)$/;
       var mp4Match = url.match(mp4RegExp);
@@ -9076,7 +9076,7 @@ var VideoDialog_VideoDialog = /*#__PURE__*/function () {
         $video = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen>').attr('frameborder', 0).attr('height', '498').attr('width', '510').attr('src', '//player.youku.com/embed/' + youkuMatch[1]);
       } else if (qqMatch && qqMatch[1].length || qqMatch2 && qqMatch2[2].length) {
         var vid = qqMatch && qqMatch[1].length ? qqMatch[1] : qqMatch2[2];
-        $video = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen>').attr('frameborder', 0).attr('height', '310').attr('width', '500').attr('src', 'https://v.qq.com/txp/iframe/player.html?vid=' + vid + '&amp;auto=0');
+        $video = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen>').attr('frameborder', 0).attr('height', '310').attr('width', '500').attr('src', 'https://v.qq.com/txp/iframe/player.php?vid=' + vid + '&amp;auto=0');
       } else if (mp4Match || oggMatch || webmMatch) {
         $video = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<video controls>').attr('src', url).attr('width', '640').attr('height', '360');
       } else if (fbMatch && fbMatch[0].length) {
@@ -9227,8 +9227,8 @@ var HelpDialog_HelpDialog = /*#__PURE__*/function () {
         $row.append(external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<label><kbd>' + key + '</kdb></label>').css({
           'width': 180,
           'margin-right': 10
-        })).append(external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<span/>').html(_this.context.memo('help.' + command) || command));
-        return $row.html();
+        })).append(external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<span/>').php(_this.context.memo('help.' + command) || command));
+        return $row.php();
       }).join('');
     }
     /**
@@ -9626,7 +9626,7 @@ var HintPopover_HintPopover = /*#__PURE__*/function () {
         items = items || [];
 
         if (items.length) {
-          $group.html(_this3.createItemTemplates(idx, items));
+          $group.php(_this3.createItemTemplates(idx, items));
 
           _this3.show();
         }
@@ -10041,7 +10041,7 @@ var dropdown = renderer["a" /* default */].create('<div class="note-dropdown-men
     var dataOption = option !== undefined ? ' data-option="' + option + '"' : '';
     return '<a class="dropdown-item" href="#" ' + (dataValue + dataOption) + ' role="listitem" aria-label="' + value + '">' + content + '</a>';
   }).join('') : options.items;
-  $node.html(markup).attr({
+  $node.php(markup).attr({
     'aria-label': options.title
   });
 
@@ -10060,7 +10060,7 @@ var dropdownCheck = renderer["a" /* default */].create('<div class="note-dropdow
     var content = options.template ? options.template(item) : item;
     return '<a class="dropdown-item" href="#" data-value="' + value + '" role="listitem" aria-label="' + item + '">' + icon(options.checkClassName) + ' ' + content + '</a>';
   }).join('') : options.items;
-  $node.html(markup).attr({
+  $node.php(markup).attr({
     'aria-label': options.title
   });
 
@@ -10076,7 +10076,7 @@ var dialog = renderer["a" /* default */].create('<div class="modal note-modal" a
   $node.attr({
     'aria-label': options.title
   });
-  $node.html(['<div class="modal-dialog">', '<div class="modal-content">', options.title ? '<div class="modal-header">' + '<h4 class="modal-title">' + options.title + '</h4>' + '<button type="button" class="close" data-dismiss="modal" aria-label="Close" aria-hidden="true">&times;</button>' + '</div>' : '', '<div class="modal-body">' + options.body + '</div>', options.footer ? '<div class="modal-footer">' + options.footer + '</div>' : '', '</div>', '</div>'].join(''));
+  $node.php(['<div class="modal-dialog">', '<div class="modal-content">', options.title ? '<div class="modal-header">' + '<h4 class="modal-title">' + options.title + '</h4>' + '<button type="button" class="close" data-dismiss="modal" aria-label="Close" aria-hidden="true">&times;</button>' + '</div>' : '', '<div class="modal-body">' + options.body + '</div>', options.footer ? '<div class="modal-footer">' + options.footer + '</div>' : '', '</div>', '</div>'].join(''));
 });
 var popover = renderer["a" /* default */].create(['<div class="note-popover popover in">', '<div class="arrow"></div>', '<div class="popover-content note-children-container"></div>', '</div>'].join(''), function ($node, options) {
   var direction = typeof options.direction !== 'undefined' ? options.direction : 'bottom';
@@ -10087,7 +10087,7 @@ var popover = renderer["a" /* default */].create(['<div class="note-popover popo
   }
 });
 var ui_checkbox = renderer["a" /* default */].create('<div class="form-check"></div>', function ($node, options) {
-  $node.html(['<label class="form-check-label"' + (options.id ? ' for="note-' + options.id + '"' : '') + '>', '<input type="checkbox" class="form-check-input"' + (options.id ? ' id="note-' + options.id + '"' : ''), options.checked ? ' checked' : '', ' aria-label="' + (options.text ? options.text : '') + '"', ' aria-checked="' + (options.checked ? 'true' : 'false') + '"/>', ' ' + (options.text ? options.text : '') + '</label>'].join(''));
+  $node.php(['<label class="form-check-label"' + (options.id ? ' for="note-' + options.id + '"' : '') + '>', '<input type="checkbox" class="form-check-input"' + (options.id ? ' id="note-' + options.id + '"' : ''), options.checked ? ' checked' : '', ' aria-label="' + (options.text ? options.text : '') + '"', ' aria-checked="' + (options.checked ? 'true' : 'false') + '"/>', ' ' + (options.text ? options.text : '') + '</label>'].join(''));
 });
 
 var icon = function icon(iconClassName, tagName) {
@@ -10133,7 +10133,7 @@ var ui_ui = function ui(editorOptions) {
           contents.push('<div class="note-color-row">' + buttons.join('') + '</div>');
         }
 
-        $node.html(contents.join(''));
+        $node.php(contents.join(''));
 
         if (options.tooltip) {
           $node.find('.note-color-btn').tooltip({
@@ -10197,7 +10197,7 @@ var ui_ui = function ui(editorOptions) {
       };
     },
     removeLayout: function removeLayout($note, layoutInfo) {
-      $note.html(layoutInfo.editable.html());
+      $note.php(layoutInfo.editable.php());
       layoutInfo.editor.remove();
       $note.show();
     }
